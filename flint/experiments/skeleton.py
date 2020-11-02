@@ -45,7 +45,7 @@ class Skeleton(Experiment):
 
         self.log_dict({
             'validation_loss': self.criterion(predicted, actual),
-            **metrics},  on_epoch=True)
+            **metrics}, on_epoch=True)
             
     def test_step(self, batch, batch_index):
         inputs, actual = batch
@@ -58,7 +58,7 @@ class Skeleton(Experiment):
 
         self.log_dict({
             'test_loss': self.criterion(predicted, actual),
-            **metrics},  on_epoch=True)
+            **metrics}, on_epoch=True)
 
     def configure_optimizers(self):
         optimizer = self.hyperparameters['optimizer'](self.parameters())
