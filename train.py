@@ -32,7 +32,7 @@ if __name__ == '__main__':
             ModelCheckpoint(
                 monitor='validation_loss',
                 dirpath=f'checkpoints/{identifier}',
-                filename='{epoch}-{step}-{val_loss:.4f}',
+                filename='{epoch}-{step}-{validation_loss:.4f}',
             ),
         ]
     )
