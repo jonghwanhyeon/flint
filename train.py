@@ -61,4 +61,4 @@ if __name__ == '__main__':
             ),
         ]
     )
-    trainer.fit(experiment, datamodule)
+    trainer.fit(skeleton, datamodule)
