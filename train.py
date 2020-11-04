@@ -12,10 +12,6 @@ from flint.datamodule import SkeletonDataModule
 from flint.experiments.skeleton import Skeleton
 from flint.utils import enter
 
-experiment = {
-    'name': 'skeleton',
-    'version': None,
-}
 
 def prepare_logger(name, version):
     logger = TensorBoardLogger(
@@ -34,6 +30,11 @@ def prepare_logger(name, version):
     return logger
 
 if __name__ == '__main__':
+    experiment = {
+        'name': 'skeleton',
+        'version': None,
+    }
+    
     datamodule = SkeletonDataModule(
         batch_size={
             'train': 48,
