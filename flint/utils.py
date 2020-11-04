@@ -66,3 +66,24 @@ def undersampler(labels, replacement=False):
 
 def list_files(*args, recursive=True):
     return list(itertools.chain.from_iterable(glob(pattern, recursive=recursive) for pattern in args))
+
+def enter(message, options):
+    assert(sum(1 if option.isupper() else 0 for option in options) <= 1)
+    
+    default = None
+    for option in options:
+        if option.isupper():
+            default = option.lower()
+            break
+    
+    prompt = f'{message} ({"/".join(options)}) '
+    options = tuple(option.lower() for option in options)
+
+    while True:
+        choice = input(prompt).strip().lower()
+
+        if choice in options:
+            return choice
+
+        if (not choice) and (default is not None):
+            return default
