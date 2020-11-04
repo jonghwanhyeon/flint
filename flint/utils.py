@@ -44,6 +44,14 @@ def train_test_split_using_knapsack(items, key, ratio=0.8):
         list(itertools.chain.from_iterable(items_by_key[key] for key in train_keys)),
         list(itertools.chain.from_iterable(items_by_key[key] for key in test_keys)),
     )
+
+def to_step_interval(lr_scheduler):
+    def inner(optimizer):
+        return {
+            'scheduler': lr_scheduler(optimizer),
+            'interval': 'step',
+        }
+    return inner
      
 def balanced_sampler(labels, number_of_samples_per_label_function, replacement):
     class_counts = np.bincount(labels)
