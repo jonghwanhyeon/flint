@@ -30,11 +30,11 @@ def prepare_logger(name, version):
     return logger
 
 if __name__ == '__main__':
-    experiment = {
+    description = {
         'name': 'skeleton',
         'version': None,
     }
-    
+
     datamodule = SkeletonDataModule(
         batch_size={
             'train': 48,
@@ -42,12 +42,12 @@ if __name__ == '__main__':
             'test': 24,
         },
     )
-    skeleton = Skeleton(
+    experiment = Skeleton(
         optimizer=partial(torch.optim.SGD, lr=0.001, momentum=0.9),
         lr_scheduler=partial(torch.optim.lr_scheduler.StepLR, step_size=128, gamma=0.98),
     )
 
-    logger = prepare_logger(**experiment)
+    logger = prepare_logger(**description)
     trainer = Trainer(
         gpus=[0], 
         num_sanity_val_steps=0,
@@ -62,4 +62,4 @@ if __name__ == '__main__':
             ),
         ]
     )
-    trainer.fit(skeleton, datamodule)
+    trainer.fit(experiment, datamodule)
