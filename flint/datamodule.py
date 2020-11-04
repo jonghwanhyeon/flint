@@ -20,10 +20,6 @@ class SkeletonDataModule(DataModule):
             'validation': 128,
             'test': 128}
     }
-    
-    def __init__(self, **kwargs):
-        super().__init__()
-        self.hyperparameters = merge_dict(self.hyperparameters, kwargs)
 
     def prepare_data(self):
         # Use this method to do things that might write to disk 
